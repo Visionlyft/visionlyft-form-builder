@@ -19,8 +19,8 @@ yarn add @visionlyft/form-builder
 ## Usage
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <img src="https://raw.githubusercontent.com/thejaved/rn-packages-app/main/app/assets/images/image2.png?token=GHSAT0AAAAAACR4DNLZWTIS7JD6D4OSHTLQZSURTWQ" alt="Customized Calendar" width="200" style="border: 1px solid #ddd;"/>
-  <img src="https://raw.githubusercontent.com/thejaved/rn-packages-app/main/app/assets/images/image1.png?token=GHSAT0AAAAAACR4DNLZ35JF3HXSYQH34HQOZSURRZA" alt="Default Custom Calendar 1" width="200" style="border: 1px solid #ddd;"/>
+  <img src="https://raw.githubusercontent.com/thejaved/images/main/image2.png" alt="Default Form Builder" width="200" style="border: 1px solid #ddd;"/>
+  <img src="https://raw.githubusercontent.com/thejaved/images/main/image1.png" alt="Customized Form Builder" width="200" style="border: 1px solid #ddd;"/>
 </div>
 
 ```javascript
