@@ -3,7 +3,7 @@ import {StyleProp, TextStyle, ViewStyle} from 'react-native';
 export interface ValidationSchema {
   [key: string]: {
     required?: boolean;
-    type?: 'email' | 'text' | 'phone' | 'textarea';
+    type?: 'email' | 'text' | 'phone' | 'textarea' | 'password';
     maxLength?: number;
   };
 }
@@ -16,24 +16,8 @@ export interface FormBuilderProps {
   inputTextAreaStyle?: StyleProp<ViewStyle>;
   inputTextAreaInnerStyle?: StyleProp<TextStyle>;
   labels?: {[key: string]: string};
+  leftIcons?: {[key: string]: JSX.Element};
+  rightIcons?: {
+    [key: string]: JSX.Element | any;
+  };
 }
-
-export const defaultInputStyle: StyleProp<TextStyle> = {
-  height: 40,
-  borderWidth: 1,
-  padding: 10,
-  marginBottom: 10,
-  borderColor: 'grey',
-};
-
-export const defaultInputTextAreaStyle: StyleProp<ViewStyle> = {
-  minHeight: 150,
-  borderWidth: 1,
-  marginBottom: 10,
-  borderColor: 'grey',
-};
-
-export const defaultInputTextAreaInnerStyle: StyleProp<ViewStyle> = {
-  minHeight: 40,
-  paddingHorizontal: 10,
-};
