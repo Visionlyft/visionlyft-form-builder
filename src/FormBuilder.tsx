@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View, TextInput, Text, TouchableOpacity} from 'react-native';
-import {FormBuilderProps} from './types';
+import React, { useState } from "react";
+import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { FormBuilderProps } from "./types";
 import {
   defaultInputStyle,
   defaultLeftIconStyle,
@@ -8,8 +8,8 @@ import {
   defaultInputViewStyle,
   defaultInputTextAreaStyle,
   defaultInputTextAreaInnerStyle,
-} from './styles';
-import {validateValues} from './formValidation';
+} from "./styles";
+import { validateValues } from "./formValidation";
 
 interface FormBuilderReturn {
   form: JSX.Element;
@@ -17,14 +17,14 @@ interface FormBuilderReturn {
 }
 
 const isPasswordIconObject = (
-  icon: JSX.Element | {visible: JSX.Element; hidden: JSX.Element},
-): icon is {visible: JSX.Element; hidden: JSX.Element} => {
+  icon: JSX.Element | { visible: JSX.Element; hidden: JSX.Element }
+): icon is { visible: JSX.Element; hidden: JSX.Element } => {
   return (
-    typeof icon !== 'undefined' &&
-    typeof (icon as {visible: JSX.Element; hidden: JSX.Element}).visible !==
-      'undefined' &&
-    typeof (icon as {visible: JSX.Element; hidden: JSX.Element}).hidden !==
-      'undefined'
+    typeof icon !== "undefined" &&
+    typeof (icon as { visible: JSX.Element; hidden: JSX.Element }).visible !==
+      "undefined" &&
+    typeof (icon as { visible: JSX.Element; hidden: JSX.Element }).hidden !==
+      "undefined"
   );
 };
 
@@ -40,9 +40,9 @@ export const FormBuilder = ({
   rightIcons,
 }: FormBuilderProps): FormBuilderReturn => {
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
-  const [showPassword, setShowPassword] = useState<{[key: string]: boolean}>(
-    {},
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [showPassword, setShowPassword] = useState<{ [key: string]: boolean }>(
+    {}
   );
 
   const handleChange = (name: string, value: string) => {
@@ -71,15 +71,15 @@ export const FormBuilder = ({
   return {
     form: (
       <View>
-        {Object.keys(initialValues).map(key => (
+        {Object.keys(initialValues).map((key) => (
           <View key={key}>
-            {validationSchema[key].type === 'textarea' ? (
+            {validationSchema[key].type === "textarea" ? (
               <View style={[defaultInputTextAreaStyle, inputTextAreaStyle]}>
                 <TextInput
                   multiline
                   placeholder={labels && labels[key] ? labels[key] : key}
                   value={values[key]}
-                  onChangeText={value => handleChange(key, value)}
+                  onChangeText={(value) => handleChange(key, value)}
                   style={[
                     defaultInputTextAreaInnerStyle,
                     inputTextAreaInnerStyle,
@@ -94,17 +94,18 @@ export const FormBuilder = ({
                 <TextInput
                   placeholder={labels && labels[key] ? labels[key] : key}
                   value={values[key]}
-                  onChangeText={value => handleChange(key, value)}
-                  secureTextEntry={key === 'password' && !showPassword[key]}
+                  onChangeText={(value) => handleChange(key, value)}
+                  secureTextEntry={key === "password" && !showPassword[key]}
                   style={defaultInputStyle}
                 />
                 {rightIcons && rightIcons[key] && (
                   <TouchableOpacity
                     onPress={() =>
-                      key === 'password' && togglePasswordVisibility(key)
+                      key === "password" && togglePasswordVisibility(key)
                     }
-                    style={defaultRightIconStyle}>
-                    {key === 'password' && isPasswordIconObject(rightIcons[key])
+                    style={defaultRightIconStyle}
+                  >
+                    {key === "password" && isPasswordIconObject(rightIcons[key])
                       ? showPassword[key]
                         ? rightIcons[key].visible
                         : rightIcons[key].hidden
@@ -113,7 +114,7 @@ export const FormBuilder = ({
                 )}
               </View>
             )}
-            {errors[key] && <Text style={{color: 'red'}}>{errors[key]}</Text>}
+            {errors[key] && <Text style={{ color: "red" }}>{errors[key]}</Text>}
           </View>
         ))}
       </View>
